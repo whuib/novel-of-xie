@@ -1,0 +1,33 @@
+<%
+const chapters = site.pages.toArray().filter(item => item.layout === 'chapter').sort((a, b) => Number(a.order) - Number(b.order));
+const chapterIndex = chapters.findIndex(item => item.path === page.path);
+const pageTitle = page.layout === 'home' ? config.title : `${page.title} · ${config.title}`;
+const chapterList = chapters.map(item => ({ order: Number(item.order), title: item.title, url: url_for(item.path) }));
+%>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f5f1e8">
+  <meta name="description" content="<%= config.description %>">
+  <title><%= pageTitle %></title>
+  <link rel="stylesheet" href="<%- url_for('/css/reader.css') %>">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem('novel-theme')||'light'}catch(e){}</script>
+</head>
+<body class="page-<%= page.layout %>" data-chapter-order="<%= page.layout === 'chapter' ? page.order : '' %>">
+  <a class="skip-link" href="#main">跳转到正文</a>
+  <header class="site-header">
+    <a class="brand" href="<%- url_for('/') %>" aria-label="返回小说首页"><span class="brand-mark">谢</span><span><%= config.title %></span></a>
+    <nav class="header-nav" aria-label="主导航">
+      <a href="<%- url_for('/chapters/') %>" <%= page.layout === 'catalog' ? 'aria-current="page"' : '' %>>目录</a>
+      <button class="theme-toggle" type="button" aria-label="切换夜间模式" title="切换夜间模式"><span class="theme-icon" aria-hidden="true">◐</span><span class="theme-label">夜间</span></button>
+    </nav>
+  </header>
+  <main id="main"><%- body %></main>
+  <footer class="site-footer"><span><%= config.title %></span><span>愿每一次翻页，都有新的相逢。</span></footer>
+  <script type="application/json" id="chapter-data"><%- JSON.stringify(chapterList).replace(/</g, '\\u003c') %></script>
+  <script src="<%- url_for('/js/reader.js') %>" defer></script>
+</body>
+</html>

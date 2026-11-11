@@ -1,0 +1,20 @@
+{
+  "name": "novel-of-xie",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "hexo generate",
+    "clean": "hexo clean",
+    "dev": "hexo server",
+    "server": "hexo server"
+  },
+  "hexo": {
+    "version": "7.3.0"
+  },
+  "dependencies": {
+    "hexo": "7.3.0",
+    "hexo-renderer-ejs": "2.0.0",
+    "hexo-renderer-marked": "7.0.0",
+    "hexo-server": "3.0.0"
+  }
+}

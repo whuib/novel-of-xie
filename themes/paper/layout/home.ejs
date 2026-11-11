@@ -1,0 +1,25 @@
+<%
+const chapters = site.pages.toArray().filter(item => item.layout === 'chapter').sort((a, b) => Number(a.order) - Number(b.order));
+const first = chapters[0];
+%>
+<section class="hero" aria-labelledby="book-title">
+  <div class="hero-ornament" aria-hidden="true">卷首</div>
+  <p class="eyebrow">一部中文长篇小说</p>
+  <h1 id="book-title"><%= config.title %></h1>
+  <div class="ornament-line" aria-hidden="true"><span>✦</span></div>
+  <p class="hero-lead">从黑云寨到万卡实验室，谢宝康在陌生的时代重新开始。命运给了他第二次人生，爱、选择与未来，却要靠他自己写下。</p>
+  <div class="hero-actions">
+    <% if (first) { %><a class="button-primary" href="<%- url_for(first.path) %>">开始阅读 <span aria-hidden="true">↗</span></a><% } %>
+    <a class="button-text" href="<%- url_for('/chapters/') %>">查看目录 <span aria-hidden="true">→</span></a>
+  </div>
+  <a class="continue-link" id="continue-link" href="#" hidden>继续阅读 <span id="continue-title"></span> <span aria-hidden="true">→</span></a>
+</section>
+<section class="home-preview" aria-labelledby="preview-title">
+  <div class="section-heading"><p class="eyebrow">The chapters</p><h2 id="preview-title">从这里，走进故事</h2></div>
+  <div class="preview-list">
+    <% chapters.filter(item => item.kind !== 'extra').slice(0, 3).forEach(item => { %>
+      <a class="preview-item" href="<%- url_for(item.path) %>"><span class="preview-number"><%= String(item.chapter_number).padStart(2, '0') %></span><span class="preview-title"><%= item.title %></span><span class="preview-arrow" aria-hidden="true">↗</span></a>
+    <% }) %>
+  </div>
+  <a class="all-chapters" href="<%- url_for('/chapters/') %>">阅读全部章节 <span aria-hidden="true">→</span></a>
+</section>

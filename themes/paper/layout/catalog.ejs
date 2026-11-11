@@ -1,0 +1,14 @@
+<%
+const chapters = site.pages.toArray().filter(item => item.layout === 'chapter').sort((a, b) => Number(a.order) - Number(b.order));
+const mainChapters = chapters.filter(item => item.kind !== 'extra');
+const extras = chapters.filter(item => item.kind === 'extra');
+%>
+<div class="catalog-page">
+  <header class="page-heading"><p class="eyebrow">Contents</p><h1>章节目录</h1><p>循着故事的顺序，慢慢读下去。</p></header>
+  <section aria-labelledby="main-chapters-title"><div class="catalog-section-title"><h2 id="main-chapters-title">正文</h2><span><%= mainChapters.length %> 章</span></div><ol class="chapter-list">
+    <% mainChapters.forEach(item => { %><li><a href="<%- url_for(item.path) %>"><span class="list-number"><%= String(item.chapter_number).padStart(2, '0') %></span><span class="list-title"><%= item.title %></span><span class="list-progress" data-progress-for="<%= item.order %>"></span><span class="list-arrow" aria-hidden="true">↗</span></a></li><% }) %>
+  </ol></section>
+  <% if (extras.length) { %><section aria-labelledby="extras-title" class="extras-section"><div class="catalog-section-title"><h2 id="extras-title">番外</h2><span><%= extras.length %> 篇</span></div><ol class="chapter-list">
+    <% extras.forEach(item => { %><li><a href="<%- url_for(item.path) %>"><span class="list-number">外</span><span class="list-title"><%= item.title %></span><span class="list-progress" data-progress-for="<%= item.order %>"></span><span class="list-arrow" aria-hidden="true">↗</span></a></li><% }) %>
+  </ol></section><% } %>
+</div>

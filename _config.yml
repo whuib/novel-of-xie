@@ -1,0 +1,18 @@
+title: 光棍节觉醒
+subtitle: 谢宝康的故事
+description: 一个从黑云寨来到现代的谢宝康，重新学习如何爱与生活的故事。
+author: whb
+language: zh-CN
+timezone: Asia/Shanghai
+url: https://whuib.github.io/novel-of-xie
+root: /novel-of-xie/
+permalink: :title/
+theme: paper
+source_dir: source
+public_dir: public
+render_drafts: false
+post_asset_folder: false
+highlight:
+  enable: false
+prismjs:
+  enable: false
