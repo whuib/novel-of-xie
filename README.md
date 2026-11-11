@@ -11,7 +11,7 @@ npm ci
 npm run dev
 ```
 
-打开终端提示的本地地址，通常为 `http://localhost:4000/novel-of-xie/`。发布前可运行 `npm run build` 检查生成结果。生成文件位于 `public/`，无需手动提交。
+打开终端提示的本地地址，通常为 `http://localhost:4000/`。发布前可运行 `npm run build` 检查生成结果。生成文件位于 `public/`，无需手动提交。
 
 ## 更新章节
 
@@ -47,4 +47,4 @@ permalink: chapters/017/
 
 ## 部署
 
-站点预设发布地址为 [https://whuib.github.io/novel-of-xie/](https://whuib.github.io/novel-of-xie/)。将代码推送到 `whuib/novel-of-xie` 的 `main` 分支后，GitHub Actions 会自动构建并部署。首次发布时，在仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**。之后每次推送都会更新网站。可在仓库 **Actions** 页面查看运行结果。
+站点发布地址为 [https://novel.whb.autos/](https://novel.whb.autos/)。将代码推送到 `whuib/novel-of-xie` 的 `main` 分支后，GitHub Actions 会自动构建并部署。仓库 **Settings → Pages → Build and deployment → Source** 使用 **GitHub Actions**，**Custom domain** 设置为 `novel.whb.autos`。之后每次推送都会更新网站。可在仓库 **Actions** 页面查看运行结果。

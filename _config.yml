@@ -4,8 +4,8 @@ description: 一个从黑云寨来到现代的谢宝康，重新学习如何爱�
 author: whb
 language: zh-CN
 timezone: Asia/Shanghai
-url: https://whuib.github.io/novel-of-xie
-root: /novel-of-xie/
+url: https://novel.whb.autos
+root: /
 permalink: :title/
 theme: paper
 source_dir: source
